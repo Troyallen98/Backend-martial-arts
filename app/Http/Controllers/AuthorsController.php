@@ -109,9 +109,9 @@ class AuthorsController extends Controller
      * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Author $author)
+    public function destroy(Author $book)
     {
-            $author->delete();
+            $book->delete();
             return response(null, 204);
     }
 }
