@@ -8,5 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Author extends Model
 {
     use HasFactory;
+    protected $table = 'authors';
     protected $fillable = ['name'];
+    protected $hidden = [
+        'laravel_through_key',
+        'created_at',
+        'updated_at'
+    ];
 }

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
+    protected $table = 'books';
     protected $fillable = ['name', 'description', 'publication_year'];
     public function author() {
         return $this->hasManyThrough(

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\BooksResource;
-use App\Models\Book;
+use App\Models\checkout;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
-class BooksController extends Controller
+
+class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,7 @@ class BooksController extends Controller
      */
     public function index()
     {
-        return BooksResource::collection(Book::all());
+        //
     }
 
     /**
@@ -23,9 +24,14 @@ class BooksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($request)
     {
-        //
+        $checkout = checkout::create([
+            'user_id' => $request->user()->id,
+            'book_id' => $request->book_id,
+            'check_out' => Carbon::now()->toDateTimeString(),
+            'check_in' => null
+        ]);
     }
 
     /**
@@ -36,34 +42,27 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        $faker = \Faker\Factory::create(1);
-
-        $book = Book::create([
-                'name' => $faker->name,
-                'description' => $faker->description,
-                'publication_year' => $faker->publication_year
-            ]);
-            return new BooksResource($book);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\checkout  $checkout
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show(checkout $checkout)
     {
-        return new BooksResource($book);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\checkout  $checkout
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function edit(checkout $checkout)
     {
         //
     }
@@ -72,27 +71,28 @@ class BooksController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\checkout  $checkout
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request)
     {
-        $book->update([
-                'name' => $request->input('name'),
-                'description' => $request->input('description'),
-                'publication_year' => $request->input('publication_year')
-            ]);
-            return new BooksResource($book);
+        $checkout = Checkout::find($request->id);
+        if ($checkout->user_id == $request->user()->id) {
+            $checkout->check_in == Carbon::now()->toDateTimeString();
+            $checkout->save();
+        }
+        //if user is who they say they are
+        //then you can check in
 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\checkout  $checkout
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy(checkout $checkout)
     {
         //
     }

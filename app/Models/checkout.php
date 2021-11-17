@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BookAuthor extends Model
+class checkout extends Model
 {
     use HasFactory;
-    protected $table = 'book_authors';
+    protected $table = 'checkout';
     /**
      * The attributes that are mass assignable.
      *
@@ -16,7 +16,9 @@ class BookAuthor extends Model
      */
     protected $fillable = [
         'book_id',
-        'author_id'
+        'user_id',
+        'check_out',
+        'check_in'
 
     ];
 }

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,9 @@ Route::middleware('auth:api')->prefix('v1')->group(function() {
     Route::apiResource('/authors', AuthorsController::class);
     Route::apiResource('/books', BooksController::class);
 });
+Route::apiResource('/roles', RoleController::class);
+Route::apiResource('/checkouts', RoleController::class);
+
 
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
