@@ -87,7 +87,7 @@ class AuthorsController extends Controller
 
             if($validated){
                 $author->update([
-                    'name'=> $request->input('name')
+                    'name' => $request->input('name')
                 ]);
 
                 return new AuthorResource($author);
