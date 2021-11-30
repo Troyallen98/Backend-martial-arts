@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
     ];
@@ -47,10 +47,6 @@ class User extends Authenticatable
     /**
      * Get the roles for the user.
      */
-    // public function roles()
-    // {
-    //     return $this->hasMany(Role::class);
-    // }
-}
+
 
 

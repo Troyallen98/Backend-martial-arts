@@ -16,6 +16,7 @@ class UserController extends Controller
     public function index()
     {
         //
+        return "hello troy";
     }
 
     /**
@@ -84,3 +85,4 @@ class UserController extends Controller
         //
     }
 }
+
