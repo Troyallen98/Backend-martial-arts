@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 // use Laravel\Sanctum\HasApiTokens;
 use Laravel\Passport\HasApiTokens;
-use App\Models\Role;
-
 
 class User extends Authenticatable
 {
@@ -48,8 +47,10 @@ class User extends Authenticatable
     /**
      * Get the roles for the user.
      */
-    public function roles()
-    {
-        return $this->hasMany(Role::class);
-    }
+    // public function roles()
+    // {
+    //     return $this->hasMany(Role::class);
+    // }
 }
+
+
