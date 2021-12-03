@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVideoRequest;
+use Illuminate\Http\Request;
+
 use App\Http\Requests\UpdateVideoRequest;
 use App\Models\Video;
 
@@ -31,17 +33,18 @@ class VideoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreVideoRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreVideoRequest $request)
+    public function store(Request $request)
     {
         {
             // Validate the request...
 
-            $video = new Video;
+            $video = new Video();
 
-            $video->url = $request->url;
+            $video->video_url = $request->video_url;
+            $video->user_id = $request->user()->id;
 
             $video->save();
         }
