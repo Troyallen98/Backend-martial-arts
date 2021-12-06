@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreVideoRequest;
 use Illuminate\Http\Request;
 
-use App\Http\Requests\UpdateVideoRequest;
-use App\Models\Video;
-
-class VideoController extends Controller
+class Position extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +13,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        return Video::all();
+        //
     }
 
     /**
@@ -33,40 +29,38 @@ class VideoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        {
-            // Validate the request...
-            $video = new Video();
-
-            $video->video_url = $request->video_url;
-            $video->user_id = $request->user()->id;
-            $video->save();
-            return $this->index();
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Video  $video
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Video $video)
     {
         //
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display the specified resource.
      *
-     * @param  \App\Models\Video  $video
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Video $video)
+    public function show($id)
+    {
+        $position = new Position();
+
+        $position->name = $request->name;
+        $position->technique_id = $request->Technique()->id;
+        $position->inverse_tech_id = $request->Position()->id;
+        $position->save();
+        return $this->index();
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
         //
     }
@@ -74,11 +68,11 @@ class VideoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateVideoRequest  $request
-     * @param  \App\Models\Video  $video
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateVideoRequest $request, Video $video)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -86,10 +80,10 @@ class VideoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Video  $video
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Video $video)
+    public function destroy($id)
     {
         //
     }

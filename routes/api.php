@@ -12,7 +12,7 @@ Route::post('/register',[UserController::class, 'register']);
 Route::middleware('auth:api')->prefix('v1')->group(function() {
 
     Route::get('/logout',[UserController::class, 'logout']);
-    Route::post('/video', [VideoController::class, 'store']);
+    Route::apiResource('/video',VideoController::class);
 
     Route::get('/user', function(Request $request){
         return $request->user();
