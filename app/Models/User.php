@@ -10,6 +10,8 @@ use Illuminate\Notifications\Notifiable;
 // use Laravel\Sanctum\HasApiTokens;
 use Laravel\Passport\HasApiTokens;
 
+use App\Models\Technique;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -50,5 +52,11 @@ class User extends Authenticatable
      */
 
 
-
+ /**
+     * Get the techniques for the user.
+     */
+    public function techniques()
+    {
+        return $this->hasMany(Technique::class);
+    }
 }

@@ -15,17 +15,9 @@ class CreatePositionsTable extends Migration
     {
         Schema::create('positions', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
-            $table->unsignedBigInteger('technique_id');
-                $table->foreign('technique_id')
-                ->references('id')
-                ->on('techniques')
-                ->onDelete('cascade');
-            $table->unsignedBigInteger('inverse_id');
-                $table->foreign('inverse_id')
-                ->references('id')
-                ->on('positions')
-                ->onDelete('cascade');
+            $table->string('name');
+            $table->unsignedBigInteger('foundation_id')->nullable();
+            $table->foreign('foundation_id')->references('id')->on('positions');
             $table->timestamps();
         });
     }

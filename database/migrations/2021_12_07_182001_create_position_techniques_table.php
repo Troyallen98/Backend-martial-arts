@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTechniquesTable extends Migration
+class CreatePositionTechniquesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateTechniquesTable extends Migration
      */
     public function up()
     {
-        Schema::create('techniques', function (Blueprint $table) {
+        Schema::create('position_techniques', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('position_id')->constrained();
+            $table->unsignedBigInteger('technique_id');
+            $table->unsignedBigInteger('inverse_tech_id')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateTechniquesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('techniques');
+        Schema::dropIfExists('position_techniques');
     }
 }

@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Video;
 
-class VideoSeeder extends Seeder
+class PositionTechniqueSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +13,6 @@ class VideoSeeder extends Seeder
      */
     public function run()
     {
-        Video::factory(100)->create();
+        PositionTechnique::factory(100)->create();
     }
 }
-

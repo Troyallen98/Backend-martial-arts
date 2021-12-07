@@ -8,9 +8,30 @@ use Illuminate\Database\Eloquent\Model;
 class Position extends Model
 {
     use HasFactory;
-    public $fillable = [
-        'name',
-        'technique_id',
-        'inverse_tech_id'
-    ];
+
+    protected $table = 'positions';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = ['name', 'foundation_id'];
+
+
+    /**
+     * Get the positions for the foundation.
+     */
+    public function positions()
+    {
+        return $this->hasMany(Position::class, 'foundation_id');
+    }
+
+    /**
+     * Get the foundation that owns the position.
+     */
+    public function foundation()
+    {
+        return $this->belongsTo(Position::class, 'foundation_id');
+    }
 }

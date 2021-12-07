@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class positionFactory extends Factory
+class PositionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,9 +14,7 @@ class positionFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'technique_id' => Technique::all()->random()->id,
-            'inverse_tech_id' => Technique::all()->random()->id
+            //
         ];
     }
 }

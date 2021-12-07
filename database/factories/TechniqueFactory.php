@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
+
 
 class TechniqueFactory extends Factory
 {
@@ -14,7 +16,9 @@ class TechniqueFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name()
+            'name' => $this->faker->words(2, true),
+            'video_url' => $this->faker->url(),
+            'user_id' => User::all()->random()->id,
         ];
     }
 }

@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Position;
 
-class position extends Seeder
+class PositionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +14,11 @@ class position extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
+        $positions = ['Mount', 'Side Control', 'Back Mount', 'Guard', 'Takedowns'];
+        for ($i = 0; $i < count($positions); $i++) {
+            $position = new Position();
+            $position->name = $positions[$i];
+            $position->save();
+        }
     }
 }

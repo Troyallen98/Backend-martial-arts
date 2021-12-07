@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Technique;
 
-class techniques extends Seeder
+class TechniqueSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +14,7 @@ class techniques extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
+        Technique::factory(100)->create();
     }
 }
+
