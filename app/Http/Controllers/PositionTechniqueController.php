@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePosition_techniqueRequest;
-use App\Http\Requests\UpdatePosition_techniqueRequest;
-use App\Models\Position_technique;
+use App\Http\Requests\UpdatePositionTechniqueRequest;
+use App\Models\PositionTechnique;
 
 
 class PositionTechniqueController extends Controller
@@ -16,7 +16,7 @@ class PositionTechniqueController extends Controller
      */
     public function index()
     {
-        return Position_technique::all();
+        return PositionTechnique::all();
     }
 
     /**
@@ -35,9 +35,9 @@ class PositionTechniqueController extends Controller
      * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Position_technique $position_technique)
+    public function store(PositionTechnique $position_technique)
     {
-        $position_technique = new Position_technique();
+        $position_technique = new PositionTechnique();
         $position_technique->position_id = $request->position()->id;
         $position_technique->technique_id = $request->technique()->id;
         $position_technique->inverse_tech_id = $request->inverse_tech()->id;
@@ -46,10 +46,10 @@ class PositionTechniqueController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Position_technique  $position_technique
+     * @param  \App\Models\PositionTechnique  $position_technique
      * @return \Illuminate\Http\Response
      */
-    public function show(Position_technique $position_technique)
+    public function show(PositionTechnique $position_technique)
     {
         //
     }
@@ -57,10 +57,10 @@ class PositionTechniqueController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Position_technique  $position_technique
+     * @param  \App\Models\PositionTechnique  $position_technique
      * @return \Illuminate\Http\Response
      */
-    public function edit(Position_technique $position_technique)
+    public function edit(PositionTechnique $position_technique)
     {
         //
     }
@@ -68,11 +68,11 @@ class PositionTechniqueController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePosition_techniqueRequest  $request
-     * @param  \App\Models\Position_technique  $position_technique
+     * @param  \App\Http\Requests\UpdatePositionTechniqueRequest  $request
+     * @param  \App\Models\PositionTechnique  $position_technique
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePosition_techniqueRequest $request, Position_technique $position_technique)
+    public function update(UpdatePositionTechniqueRequest $request, PositionTechnique $position_technique)
     {
         //
     }
@@ -80,10 +80,10 @@ class PositionTechniqueController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Position_technique  $position_technique
+     * @param  \App\Models\PositionTechnique  $position_technique
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Position_technique $position_technique)
+    public function destroy(PositionTechnique $position_technique)
     {
         //
     }

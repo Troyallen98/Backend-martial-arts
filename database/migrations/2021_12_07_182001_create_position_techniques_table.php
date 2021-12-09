@@ -17,7 +17,9 @@ class CreatePositionTechniquesTable extends Migration
             $table->id();
             $table->foreignId('position_id')->constrained();
             $table->unsignedBigInteger('technique_id');
+            $table->foreign('technique_id')->references('id')->on('techniques');
             $table->unsignedBigInteger('inverse_tech_id')->nullable();
+            $table->foreign('inverse_tech_id')->references('id')->on('techniques');
             $table->timestamps();
         });
     }

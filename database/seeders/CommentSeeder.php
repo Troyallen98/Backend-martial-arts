@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\PositionTechnique;
+use App\Models\Comment;
 
-class PositionTechniqueSeeder extends Seeder
+class CommentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class PositionTechniqueSeeder extends Seeder
      */
     public function run()
     {
-        PositionTechnique::factory(100)->create();
+        Comment::factory(100)->create();
     }
 }

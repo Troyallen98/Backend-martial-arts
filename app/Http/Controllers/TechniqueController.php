@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UpdateTechniqueRequest;
 use App\Models\Technique;
 use App\Models\PositionTechnique;
+use Appl\Models\Comment;
 
 class TechniqueController extends Controller
 {
@@ -67,9 +68,12 @@ class TechniqueController extends Controller
      * @param  \App\Models\Technique  $technique
      * @return \Illuminate\Http\Response
      */
-    public function show(Technique $technique)
+    public function show(Request $request)
     {
-        //
+        $t = Technique::find($request->id);
+        // $t->video_url = $request->video_url;
+        $t->comments();
+        return $t;
     }
 
     /**

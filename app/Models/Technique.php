@@ -19,7 +19,8 @@ class Technique extends Model
     public $fillable = [
         'name',
         'video_url',
-        'user_id'
+        'user_id',
+
     ];
 
     /**
@@ -33,5 +34,9 @@ class Technique extends Model
     public function position()
     {
         return $this->belongsTo(Position::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTechniquesTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateTechniquesTable extends Migration
      */
     public function up()
     {
-        Schema::create('techniques', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('video_url');
+            $table->string('content');
             $table->foreignId('user_id')->constrained();
+            $table->unsignedBigInteger('technique_id');
+            $table->foreign('technique_id')->references('id')->on('techniques');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateTechniquesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('techniques');
+        Schema::dropIfExists('comments');
     }
 }

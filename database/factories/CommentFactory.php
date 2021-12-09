@@ -3,10 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 use App\Models\Technique;
-use App\Models\Position;
 
-class PositionTechniqueFactory extends Factory
+class CommentFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,9 +16,11 @@ class PositionTechniqueFactory extends Factory
     public function definition()
     {
         return [
-            'position_id' => Position::all()->random()->id,
-            'technique_id' => Technique::all()->random()->id,
-            'inverse_tech_id' => Technique::all()->random()->id,
+
+                'content' => $this->faker->words(20, true),
+                'user_id' => User::all()->random()->id,
+                'technique_id' => Technique::all()->random()->id,
+
         ];
     }
 }
