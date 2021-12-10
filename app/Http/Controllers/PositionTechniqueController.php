@@ -51,7 +51,9 @@ class PositionTechniqueController extends Controller
      */
     public function show(PositionTechnique $position_technique)
     {
-        //
+        $position_technique = PositionTechnique::all();
+        $position_technique = $position_technique->find($request->position_id()->id);
+        return $position_technique;
     }
 
     /**

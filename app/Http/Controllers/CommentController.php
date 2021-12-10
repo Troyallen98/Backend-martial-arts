@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
+use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Models\Technique;
 
 class CommentController extends Controller
 {
@@ -15,7 +17,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        return Comment::all();
+        return Comment::with(['comments'])->get();
     }
 
     /**
@@ -34,13 +36,14 @@ class CommentController extends Controller
      * @param  \App\Http\Requests\StoreCommentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCommentRequest $request)
+    public function store(Request $request)
     {
-        $comment = new Comment;
-            $comment->name = $request->name;
-            $comment->user_id = $request->user()->id;
-            $comment->technique_id = $request->technique()->id;
-            $comment->save();
+        $comment = new Comment();
+        $comment->content = $request->content;
+        $comment->user_id = $request->user()->id;
+        $comment->technique_id = $request->technique_id;
+        $comment->save();
+        return 'comment posted';
     }
 
     /**
@@ -49,9 +52,11 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Comment $comment)
+    public function show(Request $request)
     {
-        //
+        $comment = Comment::where('technique_id', '=', $request->id);
+        return $comment;
+
     }
 
     /**

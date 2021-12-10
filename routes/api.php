@@ -16,16 +16,15 @@ Route::prefix('v1')->group(function () {
     Route::get('/view-technique', [TechniqueController::class, 'index', 'show']);
     Route::get('/view-positions-technique', [PositionTechniqueController::class, 'index']);
     Route::get('/view-positions-technique-comment', [CommentController::class, 'index']);
+    //edit or delete comment maybe?
 
     // need token to access these routes
     Route::middleware('auth:api')->group(function () {
         Route::get('/logout', [UserController::class, 'logout']);
         Route::apiResource('/technique', TechniqueController::class);
         Route::post('/technique', [TechniqueController::class, 'store']);
-        Route::get('/upload-positions-technique-comment', [CommentController::class, 'store']);
-        Route::get('/user', function (Request $request) {
-            return $request->user();
-        });
+        Route::post('/upload-positions-technique-comment', [CommentController::class, 'store']);
+        Route::get('/user', [UserController::class, 'viewProfile']);
     });
 });
 

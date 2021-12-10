@@ -99,6 +99,7 @@ class UserController extends Controller
     {
         $responseMessage = "user profile";
         $data = Auth::guard("api")->user();
+        // with other data as well
         return response()->json([
             "success" => true,
             "message" => $responseMessage,
