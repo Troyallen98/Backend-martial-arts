@@ -13,7 +13,7 @@ Route::prefix('v1')->group(function () {
     Route::get('/test', [UserController::class, 'index']);
     Route::get('/positions', [PositionController::class, 'index']);
     Route::post('/register', [UserController::class, 'register']);
-    Route::get('/view-technique', [TechniqueController::class, 'index', 'show']);
+    Route::get('/view-technique', [TechniqueController::class, 'index']);
     Route::get('/view-positions-technique', [PositionTechniqueController::class, 'index']);
     Route::get('/view-positions-technique-comment', [CommentController::class, 'index']);
     //edit or delete comment maybe?

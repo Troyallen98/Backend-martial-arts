@@ -19,6 +19,15 @@ class Position extends Model
     protected $fillable = ['name', 'foundation_id'];
 
 
+
+
+    /**
+     * Get the positions for the foundation.
+     */
+    public function position_techniques()
+    {
+        return $this->hasMany(PositionTechniques::class);
+    }
     /**
      * Get the positions for the foundation.
      */

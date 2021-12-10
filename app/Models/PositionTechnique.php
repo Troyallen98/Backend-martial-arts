@@ -21,28 +21,22 @@ class PositionTechnique extends Model
     protected $fillable = ['position_id', 'technique_id', 'inverse_tech_id'];
 
 
-    public function position_id()
+    public function position()
     {
         return $this->belongsTo(Position::class);
     }
 
-    public function technique_id()
+    public function technique()
     {
         return $this->belongsTo(Technique::class);
 
 
     }
-    public function position_techniques()
+    public function inverse_technique()
     {
-        return $this->hasMany(Position_technique::class, 'inverse_tech_id');
-    }
+        return $this->belongsTo(Technique::class);
 
-    /**
-     * Get the foundation that owns the position.
-     */
-    public function inverse_tech()
-    {
-        return $this->belongsTo(Position_technique::class, 'inverse_tech_id');
+
     }
 
 }

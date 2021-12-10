@@ -31,12 +31,14 @@ class Technique extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function position()
-    {
-        return $this->belongsTo(Position::class);
-    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
     }
+    public function position_technique()
+    {
+        return $this->hasOne(PositionTechnique::class);
+    }
+
 }

@@ -19,7 +19,7 @@ class TechniqueController extends Controller
      */
     public function index()
     {
-        return Technique::with(['user'])->get();
+        return Technique::with(['user', 'position_technique.position'])->get();
     }
 
     /**
@@ -70,7 +70,7 @@ class TechniqueController extends Controller
      */
     public function show(Request $request)
     {
-        $t = Technique::find($request->id)->with(['user', 'comments'])->get();
+        $t = Technique::find($request->id)->with(['user', 'comments', 'position'])->get();
         // $t->video_url = $request->video_url;
         // $t->comments();
         return $t;
