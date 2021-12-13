@@ -19,7 +19,7 @@ class TechniqueController extends Controller
      */
     public function index()
     {
-        return Technique::with(['user', 'position_technique.position'])->get();
+        return Technique::with(['user', 'position_technique.position', 'comments.user'])->get();
     }
 
     /**
