@@ -55,9 +55,9 @@ class TechniqueController extends Controller
             // if technique id is null then you dont want to use this code
             if ($request->technique_id !== null) {
                 $pos_tech->inverse_tech_id = $request->technique_id;
-                $pos_tech->save();
-                $item = $technique->load('position');
             }
+            $pos_tech->save();
+            $item = $technique->load('position_technique');
             return $item;
         }
     }
